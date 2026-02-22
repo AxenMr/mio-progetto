@@ -1,2 +1,2 @@
 # mio-progetto
-Repository di prova esercizio 2 b
+Repository esercizi TPSIT
