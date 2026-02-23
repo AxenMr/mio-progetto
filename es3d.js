@@ -1,0 +1,29 @@
+let val1 = 10;                
+let val2 = "Ciao";            
+let val3 = null;              
+let val4 = { nome: "Mario" }; 
+let val5 = function () {      
+  return "Sono una funzione";
+};
+function tipoDato(valore) {
+  if (valore === null) {
+    return "È null";
+  }
+  switch (typeof valore) {
+    case "number":
+      return "È un numero";
+    case "string":
+      return "È una stringa";
+    case "object":
+      return "È un oggetto";
+    case "function":
+      return "È una funzione";
+    default:
+      return "Tipo non riconosciuto";
+  }
+}
+console.log(tipoDato(val1));
+console.log(tipoDato(val2));
+console.log(tipoDato(val3));
+console.log(tipoDato(val4));
+console.log(tipoDato(val5));
