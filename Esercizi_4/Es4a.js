@@ -2,7 +2,7 @@
 const args = process.argv.slice(2);
 
 if (args.length !== 3) {
-  console.log("Uso: node calc.js <numero1> <operazione> <numero2>");
+  console.log("Uso: node Es4a.js <numero1> <operazione> <numero2>");
   console.log("Operazioni: add, sub, mul, div");
   process.exit(1);
 }
