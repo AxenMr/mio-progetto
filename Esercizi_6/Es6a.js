@@ -1,7 +1,7 @@
 function calcolatrice() {
     let num1 = Number(prompt("Inserisci il primo numero:"));
-    let num2 = Number(prompt("Inserisci il secondo numero:"));
     let operazione = prompt("Inserisci un'operazione (+, -, *, /, **):");
+    let num2 = Number(prompt("Inserisci il secondo numero:"));
 
     if (isNaN(num1) || isNaN(num2)) {
         alert("Errore: devi inserire numeri validi.");
