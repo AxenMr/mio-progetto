@@ -37,7 +37,7 @@ const libro1 = {
   anno: 1954,
   genere: "Fantasy",
   pagine: 1178,
-  disponibile: true,
+  disponibile: true
 };
 
 // Test: decommenta per verificare
@@ -62,7 +62,7 @@ const libro2 = {
   anno: 1949,
   genere: "Distopia",
   pagine: 328,
-  disponibile: false,
+  disponibile: false
 };
 
 
@@ -136,7 +136,7 @@ const libro3 = {
   autore: "Umberto Eco",
   anno: 1980,
   pagine: 503,
-  disponibile: true,
+  disponibile: true
   
   getInfo: function() {
     return `${this.titolo} di ${this.autore} (${this.anno})`;
@@ -287,165 +287,15 @@ function statisticheBiblioteca(libri) {
 }
 
 // Test: decommenta per verificare
-// const stats = statisticheBiblioteca(biblioteca);
-// console.log("\n=== STATISTICHE BIBLIOTECA ===");
-// console.log("Totale libri:", stats.totaleLibri);
-// console.log("Libri disponibili:", stats.libriDisponibili);
-// console.log("Totale pagine:", stats.totalePagine);
-// console.log("Media pagine:", stats.mediaPagine);
-// console.log("Autori:", stats.autori.join(", "));
-
-
-// ============================================================================
-// SOLUZIONI
-// ============================================================================
-
-/**
- * NOTA PER LO STUDENTE:
- * Prova a completare tutti gli esercizi senza guardare le soluzioni!
- * Usa le soluzioni solo per verificare il tuo lavoro o se sei bloccato.
- * 
- * Le soluzioni sono commentate alla fine del file.
- * Scorri in basso per vederle.
- */
+const stats = statisticheBiblioteca(biblioteca);
+console.log("\n=== STATISTICHE BIBLIOTECA ===");
+console.log("Totale libri:", stats.totaleLibri);
+console.log("Libri disponibili:", stats.libriDisponibili);
+console.log("Totale pagine:", stats.totalePagine);
+console.log("Media pagine:", stats.mediaPagine);
+console.log("Autori:", stats.autori.join(", "));
 
 
 console.log("\n=== FINE ESERCITAZIONE 1 ===");
 console.log("Hai completato tutti gli esercizi? Ottimo lavoro!");
 console.log("Passa alla prossima esercitazione per continuare l'apprendimento.\n");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ============================================================================
-// SOLUZIONI DEGLI ESERCIZI
-// ============================================================================
-
-/*
-
-// SOLUZIONE 1.1
-const libro1 = {
-  titolo: "Il Signore degli Anelli",
-  autore: "J.R.R. Tolkien",
-  anno: 1954,
-  genere: "Fantasy",
-  pagine: 1178,
-  disponibile: true
-};
-
-// SOLUZIONE 1.2
-const libro2 = {
-  titolo: "1984",
-  autore: "George Orwell",
-  anno: 1949,
-  genere: "Distopia",
-  pagine: 328,
-  disponibile: false
-};
-
-// SOLUZIONE 2.1
-console.log(`Titolo: ${libro1.titolo} - Autore: ${libro1.autore}`);
-
-// SOLUZIONE 2.2
-libro2.disponibile = true;
-
-// SOLUZIONE 2.3
-libro1.isbn = "978-0544003415";
-
-// SOLUZIONE 3.1
-const libro3 = {
-  titolo: "Il Nome della Rosa",
-  autore: "Umberto Eco",
-  anno: 1980,
-  pagine: 503,
-  disponibile: true,
-  
-  getInfo: function() {
-    return `${this.titolo} di ${this.autore} (${this.anno})`;
-  },
-  
-  presta: function() {
-    if (this.disponibile) {
-      this.disponibile = false;
-      console.log(`Libro prestato: ${this.titolo}`);
-    } else {
-      console.log("Libro non disponibile");
-    }
-  },
-  
-  restituisci: function() {
-    this.disponibile = true;
-    console.log(`Libro restituito: ${this.titolo}`);
-  }
-};
-
-// SOLUZIONE 4.1
-const biblioteca = [libro1, libro2, libro3];
-
-// SOLUZIONE 4.2
-function cercaPerAutore(libri, autore) {
-  return libri.filter(libro => libro.autore === autore);
-}
-
-// SOLUZIONE 4.3
-function libriDisponibili(libri) {
-  return libri.filter(libro => libro.disponibile);
-}
-
-// SOLUZIONE 4.4
-function stampaBiblioteca(libri) {
-  libri.forEach(libro => {
-    console.log(`Titolo: ${libro.titolo}`);
-    console.log(`Autore: ${libro.autore}`);
-    console.log(`Anno: ${libro.anno}`);
-    console.log(`Disponibile: ${libro.disponibile ? "Sì" : "No"}`);
-    console.log("---");
-  });
-}
-
-// SOLUZIONE 5.1
-function statisticheBiblioteca(libri) {
-  const totaleLibri = libri.length;
-  const libriDisponibili = libri.filter(l => l.disponibile).length;
-  const totalePagine = libri.reduce((somma, libro) => somma + libro.pagine, 0);
-  const mediaPagine = Math.round(totalePagine / totaleLibri);
-  const autori = [...new Set(libri.map(libro => libro.autore))];
-  
-  return {
-    totaleLibri,
-    libriDisponibili,
-    totalePagine,
-    mediaPagine,
-    autori
-  };
-}
-
-*/
