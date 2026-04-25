@@ -175,9 +175,7 @@ console.log("\n--- PARTE 4: Array di Oggetti ---\n");
  */
 
 // SCRIVI IL TUO CODICE QUI
-const biblioteca = [
-  // TODO: Aggiungi i tre libri
-];
+const biblioteca = [libro1, libro2, libro3];
 
 
 /**
@@ -191,13 +189,12 @@ const biblioteca = [
 
 // SCRIVI IL TUO CODICE QUI
 function cercaPerAutore(libri, autore) {
-  // TODO: Implementa la ricerca
-  return [];
+  return libri.filter(libro => libro.autore === autore);
 }
 
 // Test: decommenta per verificare
-// const libriTolkien = cercaPerAutore(biblioteca, "J.R.R. Tolkien");
-// console.log("Libri di Tolkien:", libriTolkien);
+const libriTolkien = cercaPerAutore(biblioteca, "J.R.R. Tolkien");
+console.log("Libri di Tolkien:", libriTolkien);
 
 
 /**
@@ -211,14 +208,19 @@ function cercaPerAutore(libri, autore) {
 
 // SCRIVI IL TUO CODICE QUI
 function libriDisponibili(libri) {
-  // TODO: Filtra i libri disponibili
-  return [];
+  let v = [];
+  for(let i=0; i<biblioteca.length; i++){
+    if(biblioteca[i].disponibile == true){
+      v.push(biblioteca[i]);
+    }
+  }
+  return v;
 }
 
 // Test: decommenta per verificare
-// const disponibili = libriDisponibili(biblioteca);
-// console.log("\nLibri disponibili:");
-// disponibili.forEach(libro => console.log("- " + libro.titolo));
+const disponibili = libriDisponibili(biblioteca);
+console.log("\nLibri disponibili:");
+disponibili.forEach(libro => console.log("- " + libro.titolo));
 
 
 /**
@@ -236,13 +238,17 @@ function libriDisponibili(libri) {
  */
 
 // SCRIVI IL TUO CODICE QUI
-function stampaBiblioteca(libri) {
-  // TODO: Cicla sui libri e stampa le informazioni
+function stampaBiblioteca(biblioteca) {
+  let s = "";
+  for(let i=0; i<biblioteca.length; i++){
+    s += biblioteca[i]+"\n";
+  }
+  return s;
 }
 
 // Test: decommenta per verificare
-// console.log("\n=== CATALOGO BIBLIOTECA ===");
-// stampaBiblioteca(biblioteca);
+console.log("\n=== CATALOGO BIBLIOTECA ===");
+stampaBiblioteca(biblioteca);
 
 
 // ============================================================================
