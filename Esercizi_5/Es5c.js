@@ -448,6 +448,7 @@ storage.clear();
 salvaOggetto("utente", { nome: "Mario", età: 30 });
 const utenteSalvato = recuperaOggetto("utente");
 console.log("\nUtente recuperato:", utenteSalvato);
+
 aggiungiALista("preferiti", "Il Signore degli Anelli");
 aggiungiALista("preferiti", "1984");
 const preferiti = recuperaOggetto("preferiti");
@@ -483,271 +484,6 @@ class BibliotecaPersistente {
   constructor(chiaveStorage = "biblioteca") {
     this.chiaveStorage = chiaveStorage;
     this.libri = [];
-    // TODO: Carica dati esistenti da storage
-  }
-  
-  aggiungiLibro(libro) {
-    // TODO: Aggiungi libro all'array
-    // Salva automaticamente
-  }
-  
-  rimuoviLibro(titolo) {
-    // TODO: Rimuovi libro per titolo
-    // Salva automaticamente
-  }
-  
-  cercaLibro(titolo) {
-    // TODO: Cerca libro (case-insensitive)
-    return null;
-  }
-  
-  salva() {
-    // TODO: Salva libri in storage usando JSON
-  }
-  
-  carica() {
-    // TODO: Carica libri da storage
-    // Gestisci caso in cui storage è vuoto
-  }
-  
-  esportaJSON() {
-    // TODO: Restituisci JSON formattato (indentazione 2)
-    return "";
-  }
-  
-  importaJSON(jsonString) {
-    try {
-      // TODO: Parsa JSON e sostituisci libri
-      // Salva automaticamente
-    } catch (errore) {
-      console.error("Errore import:", errore.message);
-    }
-  }
-  
-  getStatistiche() {
-    // TODO: Calcola statistiche
-    return {
-      totaleLibri: 0,
-      autoriUnici: 0,
-      totalePagine: 0,
-      generiUnici: 0
-    };
-  }
-}
-
-// Test: decommenta per verificare
-// storage.clear();
-// const miabiblioteca = new BibliotecaPersistente();
-// 
-// miabiblioteca.aggiungiLibro({
-//   titolo: "Il Signore degli Anelli",
-//   autore: "J.R.R. Tolkien",
-//   anno: 1954,
-//   genere: "Fantasy",
-//   pagine: 1178
-// });
-// 
-// miabiblioteca.aggiungiLibro({
-//   titolo: "1984",
-//   autore: "George Orwell",
-//   anno: 1949,
-//   genere: "Distopia",
-//   pagine: 328
-// });
-// 
-// console.log("Statistiche:", miabiblioteca.getStatistiche());
-// console.log("\nEsporta JSON:");
-// console.log(miabiblioteca.esportaJSON());
-// 
-// // Simula riavvio applicazione
-// const bibliotecaDoporiavvio = new BibliotecaPersistente();
-// console.log("\nLibri dopo riavvio:", bibliotecaDoporiavvio.libri.length);
-
-
-console.log("\n=== FINE ESERCITAZIONE 4 ===");
-console.log("Ottimo lavoro! Ora sai come lavorare con JSON in JavaScript.");
-console.log("Queste competenze sono fondamentali per comunicare con API e salvare dati.\n");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ============================================================================
-// SOLUZIONI DEGLI ESERCIZI
-// ============================================================================
-
-/*
-
-// SOLUZIONE 1.1
-const libro = {
-  titolo: "Il Nome della Rosa",
-  autore: "Umberto Eco",
-  anno: 1980,
-  genere: "Giallo",
-  pagine: 503,
-  disponibile: true
-};
-
-const libroJSON = JSON.stringify(libro);
-
-// SOLUZIONE 1.2
-const biblioteca = [
-  { titolo: "Libro 1", autore: "Autore 1", anno: 2020 },
-  { titolo: "Libro 2", autore: "Autore 2", anno: 2021 },
-  { titolo: "Libro 3", autore: "Autore 3", anno: 2022 }
-];
-
-const bibliotecaJSON = JSON.stringify(biblioteca, null, 2);
-
-// SOLUZIONE 1.3
-const libroFiltrato = JSON.stringify(libroCompleto, ["titolo", "autore", "anno"]);
-
-// SOLUZIONE 2.1
-const libroRecuperato = JSON.parse(jsonString);
-
-// SOLUZIONE 2.2
-const libriArray = JSON.parse(arrayJSON);
-libriArray.forEach(libro => {
-  console.log("Titolo:", libro.titolo);
-});
-
-// SOLUZIONE 2.3
-try {
-  const risultato = JSON.parse(jsonNonValido);
-} catch (errore) {
-  console.error("Errore di parsing JSON:", errore.message);
-}
-
-// SOLUZIONE 3.1
-const utente = {
-  nome: "Mario Rossi",
-  email: "mario@example.com",
-  password: "segreta123",
-  ruolo: "admin"
-};
-
-function replacerSicuro(key, value) {
-  if (key === "password") return undefined;
-  return value;
-}
-
-const utenteJSON = JSON.stringify(utente, replacerSicuro);
-
-// SOLUZIONE 3.2
-const prestitoJSON = JSON.stringify(prestito, null, 2);
-
-// SOLUZIONE 3.3
-function reviverDate(key, value) {
-  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}T/.test(value)) {
-    return new Date(value);
-  }
-  return value;
-}
-
-const prestitoRecuperato = JSON.parse(prestitoJSON, reviverDate);
-
-// SOLUZIONE 4.1
-const bibliotecaCopia = JSON.parse(JSON.stringify(bibliotecaOriginale));
-bibliotecaCopia.indirizzo.città = "Roma";
-bibliotecaCopia.libri[0].disponibile = false;
-
-// SOLUZIONE 4.2
-function oggettiUguali(obj1, obj2) {
-  return JSON.stringify(obj1) === JSON.stringify(obj2);
-}
-
-// SOLUZIONE 5.1
-const storage = (function() {
-  const dati = {};
-  
-  return {
-    setItem: function(chiave, valore) {
-      dati[chiave] = String(valore);
-    },
-    
-    getItem: function(chiave) {
-      return dati.hasOwnProperty(chiave) ? dati[chiave] : null;
-    },
-    
-    removeItem: function(chiave) {
-      delete dati[chiave];
-    },
-    
-    clear: function() {
-      for (let key in dati) {
-        delete dati[key];
-      }
-    },
-    
-    get length() {
-      return Object.keys(dati).length;
-    }
-  };
-})();
-
-// SOLUZIONE 5.2
-const mieiBibliLibri = [
-  { titolo: "Libro A", autore: "Autore A" },
-  { titolo: "Libro B", autore: "Autore B" }
-];
-
-storage.setItem("biblioteca", JSON.stringify(mieiBibliLibri));
-const bibliotecaRecuperata = JSON.parse(storage.getItem("biblioteca"));
-
-// SOLUZIONE 5.3
-function salvaOggetto(chiave, oggetto) {
-  storage.setItem(chiave, JSON.stringify(oggetto));
-}
-
-function recuperaOggetto(chiave) {
-  try {
-    const valore = storage.getItem(chiave);
-    return valore ? JSON.parse(valore) : null;
-  } catch (errore) {
-    console.error("Errore nel recupero:", errore.message);
-    return null;
-  }
-}
-
-function aggiungiALista(chiave, elemento) {
-  const lista = recuperaOggetto(chiave) || [];
-  lista.push(elemento);
-  salvaOggetto(chiave, lista);
-}
-
-// SOLUZIONE 6.1
-class BibliotecaPersistente {
-  constructor(chiaveStorage = "biblioteca") {
-    this.chiaveStorage = chiaveStorage;
-    this.libri = [];
     this.carica();
   }
   
@@ -758,7 +494,7 @@ class BibliotecaPersistente {
   
   rimuoviLibro(titolo) {
     this.libri = this.libri.filter(l => l.titolo.toLowerCase() !== titolo.toLowerCase());
-    this.salva();
+    this.salva;
   }
   
   cercaLibro(titolo) {
@@ -770,13 +506,12 @@ class BibliotecaPersistente {
   }
   
   carica() {
-    try {
+    try{
       const dati = storage.getItem(this.chiaveStorage);
-      if (dati) {
-        this.libri = JSON.parse(dati);
-      }
-    } catch (errore) {
-      console.error("Errore caricamento:", errore.message);
+      if(dati){this.libri = JSON.parse(dati);}
+    }
+    catch(errore){
+      console.error("ERRORE", errore.message);
       this.libri = [];
     }
   }
@@ -789,7 +524,8 @@ class BibliotecaPersistente {
     try {
       this.libri = JSON.parse(jsonString);
       this.salva();
-    } catch (errore) {
+    }
+    catch (errore) {
       console.error("Errore import:", errore.message);
     }
   }
@@ -798,7 +534,6 @@ class BibliotecaPersistente {
     const autori = new Set(this.libri.map(l => l.autore));
     const generi = new Set(this.libri.map(l => l.genere));
     const totalePagine = this.libri.reduce((tot, l) => tot + (l.pagine || 0), 0);
-    
     return {
       totaleLibri: this.libri.length,
       autoriUnici: autori.size,
@@ -808,4 +543,35 @@ class BibliotecaPersistente {
   }
 }
 
-*/
+// Test: decommenta per verificare
+storage.clear();
+const miabiblioteca = new BibliotecaPersistente();
+ 
+miabiblioteca.aggiungiLibro({
+   titolo: "Il Signore degli Anelli",
+   autore: "J.R.R. Tolkien",
+   anno: 1954,
+   genere: "Fantasy",
+   pagine: 1178
+});
+ 
+miabiblioteca.aggiungiLibro({
+   titolo: "1984",
+   autore: "George Orwell",
+   anno: 1949,
+   genere: "Distopia",
+   pagine: 328
+});
+ 
+console.log("Statistiche:", miabiblioteca.getStatistiche());
+console.log("\nEsporta JSON:");
+console.log(miabiblioteca.esportaJSON());
+ 
+// // Simula riavvio applicazione
+const bibliotecaDoporiavvio = new BibliotecaPersistente();
+console.log("\nLibri dopo riavvio:", bibliotecaDoporiavvio.libri.length);
+
+
+console.log("\n=== FINE ESERCITAZIONE 4 ===");
+console.log("Ottimo lavoro! Ora sai come lavorare con JSON in JavaScript.");
+console.log("Queste competenze sono fondamentali per comunicare con API e salvare dati.\n");
