@@ -291,20 +291,15 @@ const bibliotecaOriginale = {
 };
 
 // SCRIVI IL TUO CODICE QUI
-// TODO: Crea copia profonda
-const bibliotecaCopia = null;
-
-// TODO: Modifica la città nella copia
-// bibliotecaCopia.indirizzo.città = "Roma";
-
-// TODO: Modifica disponibilità primo libro nella copia
-// bibliotecaCopia.libri[0].disponibile = false;
+const bibliotecaCopia = JSON.parse(JSON.stringify(bibliotecaOriginale));
+bibliotecaCopia.indirizzio.città = "Roma";
+bibliotecaCopia.libri[0].disponibile = false;
 
 // Test: decommenta per verificare
-// console.log("Città originale:", bibliotecaOriginale.indirizzo.città);
-// console.log("Città copia:", bibliotecaCopia.indirizzo.città);
-// console.log("Primo libro originale disponibile?", bibliotecaOriginale.libri[0].disponibile);
-// console.log("Primo libro copia disponibile?", bibliotecaCopia.libri[0].disponibile);
+console.log("Città originale:", bibliotecaOriginale.indirizzo.città);
+console.log("Città copia:", bibliotecaCopia.indirizzo.città);
+console.log("Primo libro originale disponibile?", bibliotecaOriginale.libri[0].disponibile);
+console.log("Primo libro copia disponibile?", bibliotecaCopia.libri[0].disponibile);
 
 
 /**
@@ -319,8 +314,8 @@ const bibliotecaCopia = null;
 
 // SCRIVI IL TUO CODICE QUI
 function oggettiUguali(obj1, obj2) {
-  // TODO: Confronta usando JSON
-  return false;
+  if(JSON.stringify(obj1) === JSON.stringify(obj2)){return true;}
+  else{return false;}
 }
 
 // Test con oggetti identici
@@ -330,10 +325,10 @@ const libro3 = { autore: "Autore", titolo: "Test" }; // Proprietà in ordine div
 const libro4 = { titolo: "Test", autore: "Altro" };
 
 // Test: decommenta per verificare
-// console.log("\nConfronto oggetti:");
-// console.log("libro1 === libro2:", oggettiUguali(libro1, libro2)); // true
-// console.log("libro1 === libro3:", oggettiUguali(libro1, libro3)); // Potrebbe essere false!
-// console.log("libro1 === libro4:", oggettiUguali(libro1, libro4)); // false
+console.log("\nConfronto oggetti:");
+console.log("libro1 === libro2:", oggettiUguali(libro1, libro2)); // true
+console.log("libro1 === libro3:", oggettiUguali(libro1, libro3)); // Potrebbe essere false!
+console.log("libro1 === libro4:", oggettiUguali(libro1, libro4)); // false
 
 
 // ============================================================================
@@ -357,39 +352,37 @@ console.log("\n--- PARTE 5: Simulazione localStorage ---\n");
 
 // SCRIVI IL TUO CODICE QUI
 const storage = (function() {
-  // Proprietà privata
   const dati = {};
-  
   return {
     setItem: function(chiave, valore) {
-      // TODO: Salva valore come stringa
-      // Converti valore in stringa (anche se è già stringa)
+      dati[chiave] = String(valore);
     },
     
     getItem: function(chiave) {
-      // TODO: Restituisci il valore o null se non esiste
+      return dati.hasOwnProperty(chiave) ? dati[chiave]: null;
       return null;
     },
     
     removeItem: function(chiave) {
-      // TODO: Rimuovi elemento
+      delete dati[chiave];
     },
     
     clear: function() {
-      // TODO: Cancella tutto
+      for(let i=0; i<dati.length; i++){
+        delete dati[i];
+      }
     },
     
     get length() {
-      // TODO: Restituisci numero di chiavi
-      return 0;
+      return dati.length;
     }
   };
 })();
 
 // Test: decommenta per verificare
-// storage.setItem("test", "valore");
-// console.log("Recuperato:", storage.getItem("test"));
-// console.log("Lunghezza:", storage.length);
+storage.setItem("test", "valore");
+console.log("Recuperato:", storage.getItem("test"));
+console.log("Lunghezza:", storage.length);
 
 
 /**
@@ -404,22 +397,18 @@ const storage = (function() {
  */
 
 // SCRIVI IL TUO CODICE QUI
-// TODO: Crea array di libri
-const mieiBibliLibri = [];
-
-// TODO: Salva in storage
-// storage.setItem("biblioteca", ...);
-
-// TODO: Recupera da storage
-const bibliotecaRecuperata = null;
-
-// TODO: Parsa e stampa titoli
+const mieiBibliLibri = [
+  {titolo: "Libro X" , autore: "Autore X"},
+  {titolo: "Libro Y" , autore: "Autore Y"}
+];
+storage.setItem("biblioteca", JSON.stringify(mieiBilbliLibri));
+const bibliotecaRecuperata = JSON.parse(storage.getItem("biblioteca"));
 
 // Test: decommenta per verificare
-// console.log("\nLibri recuperati dallo storage:");
-// bibliotecaRecuperata.forEach(libro => {
-//   console.log("-", libro.titolo);
-// });
+console.log("\nLibri recuperati dallo storage:");
+bibliotecaRecuperata.forEach(libro => {
+  console.log("-", libro.titolo);
+});
 
 
 /**
@@ -435,14 +424,13 @@ const bibliotecaRecuperata = null;
 
 // SCRIVI IL TUO CODICE QUI
 function salvaOggetto(chiave, oggetto) {
-  // TODO: Converti in JSON e salva in storage
+  storage.setItem(chiave, JSON.stringify(oggetto));
 }
 
 function recuperaOggetto(chiave) {
   try {
-    // TODO: Recupera da storage e parsa JSON
-    // Se non esiste, restituisci null
-    return null;
+    const valore = storage.getItem(chiave);
+    return valore ? JSON.parse(valore) : null;
   } catch (errore) {
     console.error("Errore nel recupero:", errore.message);
     return null;
@@ -450,21 +438,20 @@ function recuperaOggetto(chiave) {
 }
 
 function aggiungiALista(chiave, elemento) {
-  // TODO: Recupera lista esistente (o crea array vuoto)
-  // Aggiungi elemento
-  // Salva lista aggiornata
+  const lista = recuperaOggetto(chiave) || [];
+  lista.push(elemento);
+  salvaOggetto(chiave, lista);
 }
 
 // Test: decommenta per verificare
-// storage.clear();
-// salvaOggetto("utente", { nome: "Mario", età: 30 });
-// const utenteSalvato = recuperaOggetto("utente");
-// console.log("\nUtente recuperato:", utenteSalvato);
-// 
-// aggiungiALista("preferiti", "Il Signore degli Anelli");
-// aggiungiALista("preferiti", "1984");
-// const preferiti = recuperaOggetto("preferiti");
-// console.log("Preferiti:", preferiti);
+storage.clear();
+salvaOggetto("utente", { nome: "Mario", età: 30 });
+const utenteSalvato = recuperaOggetto("utente");
+console.log("\nUtente recuperato:", utenteSalvato);
+aggiungiALista("preferiti", "Il Signore degli Anelli");
+aggiungiALista("preferiti", "1984");
+const preferiti = recuperaOggetto("preferiti");
+console.log("Preferiti:", preferiti);
 
 
 // ============================================================================
