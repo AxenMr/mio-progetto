@@ -79,7 +79,7 @@ console.log("\n--- PARTE 2: Accesso e Modifica ---\n");
  */
 
 // SCRIVI IL TUO CODICE QUI
-console.log("Titolo: [titolo] - Autore: [autore]");
+console.log(`Titolo: ${libro1.titolo} - Autore: ${libro1.autore}`);
 
 
 /**
