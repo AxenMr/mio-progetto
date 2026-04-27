@@ -292,7 +292,7 @@ const bibliotecaOriginale = {
 
 // SCRIVI IL TUO CODICE QUI
 const bibliotecaCopia = JSON.parse(JSON.stringify(bibliotecaOriginale));
-bibliotecaCopia.indirizzio.città = "Roma";
+bibliotecaCopia.indirizzo.città = "Roma";
 bibliotecaCopia.libri[0].disponibile = false;
 
 // Test: decommenta per verificare
