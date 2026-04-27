@@ -401,7 +401,7 @@ const mieiBibliLibri = [
   {titolo: "Libro X" , autore: "Autore X"},
   {titolo: "Libro Y" , autore: "Autore Y"}
 ];
-storage.setItem("biblioteca", JSON.stringify(mieiBilbliLibri));
+storage.setItem("biblioteca", JSON.stringify(mieiBibliLibri));
 const bibliotecaRecuperata = JSON.parse(storage.getItem("biblioteca"));
 
 // Test: decommenta per verificare
