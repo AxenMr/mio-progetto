@@ -1,10 +1,10 @@
 function calcolatrice() {
-    let num1 = Number(prompt("Inserisci il primo numero:"));
-    let operazione = prompt("Inserisci un'operazione (+, -, *, /, **):");
-    let num2 = Number(prompt("Inserisci il secondo numero:"));
+    let num1 = Number(console.log("Inserisci il primo numero:"));
+    let operazione = console.log("Inserisci un'operazione (+, -, *, /, **):");
+    let num2 = Number(console.log("Inserisci il secondo numero:"));
 
     if (isNaN(num1) || isNaN(num2)) {
-        alert("Errore: devi inserire numeri validi.");
+        console.log("Errore: devi inserire numeri validi.");
         return;
     }
 
@@ -22,7 +22,7 @@ function calcolatrice() {
             break;
         case "/":
             if (num2 === 0) {
-                alert("Errore: divisione per zero.");
+                console.log("Errore: divisione per zero.");
                 return;
             }
             risultato = num1 / num2;
@@ -31,7 +31,7 @@ function calcolatrice() {
             risultato = num1 ** num2;
             break;
         default:
-            alert("Errore: operazione non valida.");
+            console.log("Errore: operazione non valida.");
             return;
     }
 
