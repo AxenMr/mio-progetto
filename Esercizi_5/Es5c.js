@@ -194,7 +194,7 @@ const utente = {
   nome: "Mario Rossi",
   email: "mario@example.com",
   password: "segreta123",
-  ruolo; "admin"
+  ruolo: "admin"
 };
 
 // TODO: Crea funzione replacer
