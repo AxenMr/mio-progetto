@@ -62,7 +62,7 @@ const libro2 = {
   anno: 1949,
   genere: "Distopia",
   pagine: 328,
-  disponibile: false
+  disponibile: false,
 };
 
 
@@ -145,7 +145,10 @@ const libro3 = {
   presta: function() {
     if(this.disponibile){
       this.diponibile = false;
-      console.log("Libro prestato: "+libro3.titolo);
+      console.log("Libro prestato: "+this.titolo);
+    }
+    else{
+      console.log("Libro non disponibile ");
     }
   },
   
@@ -210,8 +213,8 @@ console.log("Libri di Tolkien:", libriTolkien);
 function libriDisponibili(libri) {
   let v = [];
   for(let i=0; i<biblioteca.length; i++){
-    if(biblioteca[i].disponibile == true){
-      v.push(biblioteca[i]);
+    if(libri[i].disponibile == true){
+      v.push(libri[i]);
     }
   }
   return v;
@@ -238,12 +241,14 @@ disponibili.forEach(libro => console.log("- " + libro.titolo));
  */
 
 // SCRIVI IL TUO CODICE QUI
-function stampaBiblioteca(biblioteca) {
-  let s = "";
-  for(let i=0; i<biblioteca.length; i++){
-    s += biblioteca[i]+"\n";
-  }
-  return s;
+function stampaBiblioteca(libri) {
+  libri.forEach(libro => {
+    console.log(`Titolo: ${libro.titolo}`);
+    console.log(`Autore: ${libro.autore}`);
+    console.log(`Anno: ${libro.anno}`);
+    console.log(`Disponibile: ${libro.disponibile ? "Sì" : "No"}`);
+    console.log("---");
+  });
 }
 
 // Test: decommenta per verificare
