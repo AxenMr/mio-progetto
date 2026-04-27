@@ -159,11 +159,11 @@ const libro3 = {
 };
 
 // Test: decommenta per verificare
-// console.log(libro3.getInfo());
-// libro3.presta();
-// libro3.presta(); // Dovrebbe dire che non è disponibile
-// libro3.restituisci();
-// console.log("Libro disponibile?", libro3.disponibile);
+console.log(libro3.getInfo());
+libro3.presta();
+libro3.presta(); // Dovrebbe dire che non è disponibile
+libro3.restituisci();
+console.log("Libro disponibile?", libro3.disponibile);
 
 
 // ============================================================================
