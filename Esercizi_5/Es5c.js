@@ -46,7 +46,7 @@ const libro = {
 };
 
 // TODO: Converti in JSON
-const libroJSON = JSON.stringfy(libro);
+const libroJSON = JSON.stringify(libro);
 
 // Test: decommenta per verificare
 console.log("Oggetto originale:", libro);
