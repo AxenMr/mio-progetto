@@ -67,7 +67,7 @@ console.log("Tipo:", typeof libroJSON);
 const biblioteca = [
   {titolo: "Il Nome Della Rosa" , autore: "Umberto Eco" , anno: 1980},
   {titolo: "1984" , autore: "George Orwell" , anno:1949},
-  {titolo: "Berserk Volume 1" , autore "Kentaro Miura" , anno: 1989}
+  {titolo: "Berserk Volume 1" , autore: "Kentaro Miura" , anno: 1989}
 ];
 
 // TODO: Converti in JSON con indentazione
