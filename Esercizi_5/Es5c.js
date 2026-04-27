@@ -102,7 +102,7 @@ const libroCompleto = {
 
 // SCRIVI IL TUO CODICE QUI
 // TODO: Converti solo titolo, autore e anno
-const libroFiltrato = JSONO.stringify(libroCompleto , ["titolo" , "autore" , "anno"]);
+const libroFiltrato = JSON.stringify(libroCompleto , ["titolo" , "autore" , "anno"]);
 
 // Test: decommenta per verificare
 console.log("\nLibro filtrato (solo titolo, autore, anno):");
