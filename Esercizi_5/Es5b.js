@@ -136,7 +136,7 @@ const libro3 = {
   autore: "Umberto Eco",
   anno: 1980,
   pagine: 503,
-  disponibile: true
+  disponibile: true,
   
   getInfo: function() {
     return `${this.titolo} di ${this.autore} (${this.anno})`;
